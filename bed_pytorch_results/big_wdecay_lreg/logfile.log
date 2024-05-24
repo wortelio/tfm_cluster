@@ -1,0 +1,1870 @@
+BIG BED after dropout, adding Loss Regularization and Weight Decay
+Starting script
+
+Device: cuda
+Learning Rate: 0.0005
+Weight Decay: 0.0001
+Batch Size: 64
+IMG DIMS: (224, 224)
+W: 224
+H: 224
+SX: 7
+SY: 7
+B: 2
+C: 2
+
+Confidence Threshold: 0.2
+IOU mAP Threshold: 0.5
+IOU NMS Threshold: 0.3
+
+Using OPTIM BED 224x224
+Model shape is torch.Size([4, 7, 7, 12])
+BED Model Arquitecture
+BIG_BED(
+  (model): Sequential(
+    (0): Conv2d(3, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout2d(p=0.3, inplace=False)
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Conv2d(128, 48, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (6): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (7): ReLU()
+    (8): Dropout2d(p=0.3, inplace=False)
+    (9): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (10): Conv2d(48, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (11): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (12): ReLU()
+    (13): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (14): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (15): ReLU()
+    (16): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (17): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (18): ReLU()
+    (19): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (20): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (21): ReLU()
+    (22): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (23): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (24): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (25): ReLU()
+    (26): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (27): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (28): ReLU()
+    (29): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (30): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (31): ReLU()
+    (32): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (33): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (34): ReLU()
+    (35): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (36): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (37): ReLU()
+    (38): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (39): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (40): ReLU()
+    (41): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (42): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (43): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (44): ReLU()
+    (45): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (46): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (47): ReLU()
+    (48): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (49): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (50): ReLU()
+    (51): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (52): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (53): ReLU()
+    (54): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (55): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (56): ReLU()
+    (57): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (58): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (59): ReLU()
+    (60): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (61): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (62): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (63): ReLU()
+    (64): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (65): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (66): ReLU()
+    (67): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (68): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (69): ReLU()
+    (70): Conv2d(128, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (71): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (72): ReLU()
+    (73): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (74): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (75): ReLU()
+    (76): Conv2d(32, 12, kernel_size=(1, 1), stride=(1, 1))
+  )
+)
+
+Trainable parameters = 1177868
+Total parameters = 1177868
+
+Using YoloLossCIOU_2BBox
+
+TRAIN DFIRE dataset
+Removed wrong images: 0
+Removed due to overlapping: 546
+Removed due to more than 3: 1764
+TRAIN DFS dataset
+Removed wrong images: 0
+Removed due to overlapping: 271
+Removed due to more than 3: 1210
+Concatenate Train DFire and DFS datasets
+Train dataset len: 21144
+
+TEST DFire dataset
+Removed wrong images: 0
+Removed due to overlapping: 118
+Removed due to more than 3: 445
+TEST DFS dataset
+Removed wrong images: 0
+Removed due to overlapping: 75
+Removed due to more than 3: 298
+Concatenate Test DFire and DFS datasets
+Test dataset len: 5298
+
+***Start Training: 09:31:55
+
+
+=== EPOCH 0/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+338.755     |65.928      |53.028      |148.089     |20.971      
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+161.627     |57.573      |64.612      |25.998      |13.443      
+
+Saving model with new best validation loss: 161.627
+
+=== EPOCH 1/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+187.459     |50.648      |63.987      |15.065      |9.995       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+124.522     |45.592      |60.232      |11.567      |7.131       
+
+Saving model with new best validation loss: 124.522
+
+=== EPOCH 2/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+167.377     |43.088      |62.228      |9.824       |7.680       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+113.760     |39.598      |59.281      |8.643       |6.238       
+
+Saving model with new best validation loss: 113.760
+
+=== EPOCH 3/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+156.645     |38.742      |59.532      |9.585       |6.900       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+107.409     |36.252      |52.175      |13.754      |5.228       
+
+Saving model with new best validation loss: 107.409
+
+=== EPOCH 4/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+148.397     |35.735      |56.710      |10.104      |6.321       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+102.755     |34.141      |55.234      |8.151       |5.230       
+
+Validation mAP: 0.124
+
+Saving model with new best val mAP: 0.124
+
+Saving model with new best validation loss: 102.755
+
+=== EPOCH 5/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+142.493     |34.155      |54.938      |10.114      |5.724       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+99.792      |32.643      |53.046      |9.085       |5.018       
+
+Saving model with new best validation loss: 99.792
+
+=== EPOCH 6/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+138.556     |33.030      |54.106      |10.121      |5.409       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+98.424      |32.677      |50.704      |10.107      |4.936       
+
+Saving model with new best validation loss: 98.424
+
+=== EPOCH 7/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+134.321     |31.615      |52.859      |10.225      |5.206       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+96.694      |31.048      |49.091      |11.752      |4.802       
+
+Saving model with new best validation loss: 96.694
+
+=== EPOCH 8/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+131.494     |30.832      |51.861      |10.479      |5.179       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+93.822      |30.405      |45.635      |13.359      |4.422       
+
+Saving model with new best validation loss: 93.822
+
+=== EPOCH 9/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+128.703     |30.079      |51.196      |10.478      |4.792       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+93.607      |30.166      |49.279      |10.010      |4.152       
+
+Validation mAP: 0.221
+
+Saving model with new best val mAP: 0.221
+
+Saving model with new best validation loss: 93.607
+
+=== EPOCH 10/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+126.421     |29.362      |50.512      |10.553      |4.729       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+91.099      |29.415      |45.943      |11.547      |4.193       
+
+Saving model with new best validation loss: 91.099
+
+=== EPOCH 11/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+123.799     |28.657      |49.245      |10.788      |4.542       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+90.133      |28.866      |43.125      |13.962      |4.180       
+
+Saving model with new best validation loss: 90.133
+
+=== EPOCH 12/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+122.699     |28.285      |49.228      |10.704      |4.581       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+88.453      |28.346      |43.561      |12.476      |4.071       
+
+Saving model with new best validation loss: 88.453
+
+=== EPOCH 13/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+120.662     |27.877      |47.959      |11.051      |4.454       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+87.429      |27.695      |44.654      |10.913      |4.166       
+
+Saving model with new best validation loss: 87.429
+
+=== EPOCH 14/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+118.562     |27.106      |47.133      |11.161      |4.261       
+
+Train mAP: 0.227
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+87.011      |27.246      |46.038      |9.479       |4.249       
+
+Validation mAP: 0.218
+
+Saving model with new best validation loss: 87.011
+
+=== EPOCH 15/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+117.076     |26.533      |46.597      |11.144      |4.237       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+84.864      |26.446      |41.062      |13.224      |4.132       
+
+Saving model with new best validation loss: 84.864
+
+=== EPOCH 16/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+115.212     |26.069      |45.544      |11.314      |4.035       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+83.619      |26.107      |39.815      |13.972      |3.726       
+
+Saving model with new best validation loss: 83.619
+
+=== EPOCH 17/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+114.110     |25.578      |45.386      |11.188      |4.038       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+82.785      |25.750      |41.591      |11.826      |3.619       
+
+Saving model with new best validation loss: 82.785
+
+=== EPOCH 18/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+112.417     |25.003      |44.396      |11.357      |3.984       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+83.369      |25.975      |44.004      |9.193       |4.197       
+
+=== EPOCH 19/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+111.965     |24.943      |44.281      |11.403      |3.906       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+82.456      |26.360      |39.710      |12.339      |4.047       
+
+Validation mAP: 0.246
+
+Saving model with new best val mAP: 0.246
+
+Saving model with new best validation loss: 82.456
+
+=== EPOCH 20/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+110.449     |24.377      |43.584      |11.393      |3.873       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+82.396      |25.803      |37.412      |15.246      |3.935       
+
+Saving model with new best validation loss: 82.396
+
+=== EPOCH 21/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+109.462     |23.937      |43.125      |11.441      |3.923       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+79.079      |24.614      |36.552      |14.381      |3.532       
+
+Saving model with new best validation loss: 79.079
+
+=== EPOCH 22/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+108.855     |23.936      |42.680      |11.572      |3.765       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+79.363      |24.630      |38.609      |12.675      |3.449       
+
+=== EPOCH 23/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+107.540     |23.236      |42.567      |11.346      |3.662       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+77.759      |24.072      |37.486      |12.669      |3.532       
+
+Saving model with new best validation loss: 77.759
+
+=== EPOCH 24/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+106.637     |23.187      |41.718      |11.429      |3.767       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+78.313      |24.224      |39.335      |11.309      |3.444       
+
+Validation mAP: 0.264
+
+Saving model with new best val mAP: 0.264
+
+=== EPOCH 25/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+106.459     |23.078      |41.819      |11.408      |3.607       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+77.108      |23.348      |38.160      |12.112      |3.487       
+
+Saving model with new best validation loss: 77.108
+
+=== EPOCH 26/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+105.262     |22.700      |41.135      |11.543      |3.447       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+77.640      |23.332      |40.281      |10.609      |3.417       
+
+=== EPOCH 27/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+105.009     |22.504      |41.287      |11.257      |3.703       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+76.608      |23.113      |37.028      |12.942      |3.524       
+
+Saving model with new best validation loss: 76.608
+
+=== EPOCH 28/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+104.136     |22.327      |40.510      |11.618      |3.541       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+75.906      |23.502      |38.272      |10.275      |3.857       
+
+Saving model with new best validation loss: 75.906
+
+=== EPOCH 29/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+103.661     |22.323      |40.403      |11.449      |3.414       
+
+Train mAP: 0.295
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+75.625      |23.655      |38.660      |9.950       |3.359       
+
+Validation mAP: 0.278
+
+Saving model with new best val mAP: 0.278
+
+Saving model with new best validation loss: 75.625
+
+=== EPOCH 30/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+103.236     |22.069      |40.333      |11.455      |3.391       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+77.006      |23.579      |38.801      |11.120      |3.505       
+
+=== EPOCH 31/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+102.919     |21.767      |40.339      |11.404      |3.471       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+74.365      |22.898      |36.149      |12.183      |3.135       
+
+Saving model with new best validation loss: 74.365
+
+=== EPOCH 32/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+101.788     |21.463      |39.705      |11.352      |3.364       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+74.165      |22.622      |35.394      |12.802      |3.346       
+
+Saving model with new best validation loss: 74.165
+
+=== EPOCH 33/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+101.242     |21.266      |39.345      |11.613      |3.211       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+74.547      |22.623      |36.200      |12.382      |3.342       
+
+=== EPOCH 34/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+101.459     |21.595      |39.361      |11.443      |3.320       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+74.474      |22.792      |37.640      |10.841      |3.200       
+
+Validation mAP: 0.260
+
+=== EPOCH 35/119 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+99.528      |20.650      |38.798      |11.452      |2.987       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+74.681      |22.661      |34.056      |14.608      |3.357       
+
+=== EPOCH 36/119 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+98.666      |20.741      |37.980      |11.429      |3.089       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+71.953      |21.795      |34.536      |12.398      |3.224       
+
+Saving model with new best validation loss: 71.953
+
+=== EPOCH 37/119 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+97.317      |20.182      |37.731      |11.284      |2.914       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+72.297      |21.631      |37.425      |9.991       |3.251       
+
+=== EPOCH 38/119 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+96.648      |19.967      |37.357      |11.294      |2.962       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+72.007      |21.924      |37.531      |9.324       |3.229       
+
+=== EPOCH 39/119 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+96.267      |19.840      |36.911      |11.415      |3.132       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+72.423      |21.912      |36.082      |11.285      |3.144       
+
+Validation mAP: 0.325
+
+Saving model with new best val mAP: 0.325
+
+=== EPOCH 40/119 ===
+Learning Rate = 0.00032
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+94.487      |19.411      |36.286      |11.231      |2.802       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+70.846      |21.610      |31.492      |14.572      |3.172       
+
+Saving model with new best validation loss: 70.846
+
+=== EPOCH 41/119 ===
+Learning Rate = 0.00032
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+93.694      |19.205      |35.899      |11.086      |2.932       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+69.766      |21.101      |33.550      |11.954      |3.161       
+
+Saving model with new best validation loss: 69.766
+
+=== EPOCH 42/119 ===
+Learning Rate = 0.00032
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+92.791      |18.762      |35.808      |11.079      |2.677       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+69.816      |21.104      |33.320      |12.268      |3.123       
+
+=== EPOCH 43/119 ===
+Learning Rate = 0.00032
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+92.804      |18.706      |35.746      |11.198      |2.794       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+70.450      |21.126      |32.100      |14.297      |2.927       
+
+=== EPOCH 44/119 ===
+Learning Rate = 0.00032
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+91.919      |18.452      |35.235      |11.213      |2.761       
+
+Train mAP: 0.351
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+69.780      |21.020      |34.120      |11.587      |3.052       
+
+Validation mAP: 0.323
+
+=== EPOCH 45/119 ===
+Learning Rate = 0.00025600000000000004
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+90.101      |18.136      |34.321      |10.976      |2.568       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+68.130      |20.447      |34.218      |10.592      |2.873       
+
+Saving model with new best validation loss: 68.130
+
+=== EPOCH 46/119 ===
+Learning Rate = 0.00025600000000000004
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+90.000      |18.216      |34.417      |10.834      |2.588       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+67.770      |20.442      |32.596      |11.797      |2.936       
+
+Saving model with new best validation loss: 67.770
+
+=== EPOCH 47/119 ===
+Learning Rate = 0.00025600000000000004
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+89.593      |18.160      |33.981      |11.002      |2.607       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+68.321      |20.675      |32.048      |12.508      |3.090       
+
+=== EPOCH 48/119 ===
+Learning Rate = 0.00025600000000000004
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+88.799      |17.753      |33.865      |10.918      |2.528       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+69.223      |20.771      |34.871      |10.512      |3.069       
+
+=== EPOCH 49/119 ===
+Learning Rate = 0.00025600000000000004
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+87.832      |17.466      |33.597      |10.743      |2.365       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+69.052      |20.595      |30.948      |14.628      |2.881       
+
+Validation mAP: 0.315
+
+=== EPOCH 50/119 ===
+Learning Rate = 0.00020480000000000004
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+86.911      |17.349      |32.877      |10.770      |2.397       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+67.702      |20.407      |33.498      |10.860      |2.937       
+
+Saving model with new best validation loss: 67.702
+
+=== EPOCH 51/119 ===
+Learning Rate = 0.00020480000000000004
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+85.938      |16.906      |32.726      |10.614      |2.320       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+66.769      |19.988      |31.672      |12.207      |2.903       
+
+Saving model with new best validation loss: 66.769
+
+=== EPOCH 52/119 ===
+Learning Rate = 0.00020480000000000004
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+85.653      |16.911      |32.548      |10.755      |2.149       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+66.616      |19.901      |33.002      |10.892      |2.821       
+
+Saving model with new best validation loss: 66.616
+
+=== EPOCH 53/119 ===
+Learning Rate = 0.00020480000000000004
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+85.469      |16.812      |32.503      |10.636      |2.293       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+67.139      |20.256      |31.486      |12.392      |3.005       
+
+=== EPOCH 54/119 ===
+Learning Rate = 0.00020480000000000004
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+84.435      |16.396      |32.106      |10.522      |2.261       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+66.673      |20.064      |31.502      |12.129      |2.978       
+
+Validation mAP: 0.369
+
+Saving model with new best val mAP: 0.369
+
+=== EPOCH 55/119 ===
+Learning Rate = 0.00020480000000000004
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+84.684      |16.653      |32.207      |10.499      |2.246       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+67.515      |19.982      |33.422      |11.109      |3.003       
+
+=== EPOCH 56/119 ===
+Learning Rate = 0.00016384000000000006
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+83.590      |16.518      |31.458      |10.445      |2.180       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+66.688      |20.398      |30.898      |12.364      |3.028       
+
+=== EPOCH 57/119 ===
+Learning Rate = 0.00016384000000000006
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+83.181      |16.259      |31.367      |10.404      |2.250       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+66.965      |19.824      |30.313      |13.866      |2.963       
+
+=== EPOCH 58/119 ===
+Learning Rate = 0.00016384000000000006
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+82.256      |16.179      |30.682      |10.373      |2.198       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+66.106      |19.604      |32.612      |10.815      |3.075       
+
+Saving model with new best validation loss: 66.106
+
+=== EPOCH 59/119 ===
+Learning Rate = 0.00016384000000000006
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+81.699      |15.970      |30.493      |10.247      |2.221       
+
+Train mAP: 0.452
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+67.925      |20.018      |34.092      |10.835      |2.980       
+
+Validation mAP: 0.387
+
+Saving model with new best val mAP: 0.387
+
+=== EPOCH 60/119 ===
+Learning Rate = 0.00016384000000000006
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+80.843      |15.813      |30.055      |10.167      |2.103       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+66.648      |19.737      |31.738      |12.315      |2.857       
+
+=== EPOCH 61/119 ===
+Learning Rate = 0.00016384000000000006
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+81.212      |15.897      |30.505      |10.107      |2.033       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+66.624      |19.924      |31.917      |11.884      |2.899       
+
+=== EPOCH 62/119 ===
+Learning Rate = 0.00013107200000000006
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+80.312      |15.553      |30.014      |10.090      |2.060       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.722      |19.687      |32.217      |10.926      |2.892       
+
+Saving model with new best validation loss: 65.722
+
+=== EPOCH 63/119 ===
+Learning Rate = 0.00013107200000000006
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+79.525      |15.489      |29.489      |9.968       |2.072       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+66.283      |19.814      |30.628      |13.122      |2.718       
+
+=== EPOCH 64/119 ===
+Learning Rate = 0.00013107200000000006
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+79.715      |15.490      |29.864      |9.865       |2.039       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.877      |19.675      |32.164      |11.188      |2.850       
+
+Validation mAP: 0.391
+
+Saving model with new best val mAP: 0.391
+
+=== EPOCH 65/119 ===
+Learning Rate = 0.00013107200000000006
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+79.339      |15.497      |29.539      |9.847       |2.033       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+66.058      |19.815      |31.708      |11.681      |2.853       
+
+=== EPOCH 66/119 ===
+Learning Rate = 0.00010485760000000006
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+78.222      |15.236      |28.783      |9.693       |2.155       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+66.154      |19.773      |31.848      |11.475      |3.058       
+
+=== EPOCH 67/119 ===
+Learning Rate = 0.00010485760000000006
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+77.423      |15.177      |28.551      |9.496       |1.914       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.802      |19.460      |30.374      |13.261      |2.707       
+
+=== EPOCH 68/119 ===
+Learning Rate = 0.00010485760000000006
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+77.433      |15.021      |28.586      |9.516       |2.078       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+66.440      |19.639      |31.402      |12.316      |3.083       
+
+=== EPOCH 69/119 ===
+Learning Rate = 8.388608000000005e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+76.198      |14.822      |27.893      |9.344       |1.966       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.398      |19.401      |31.463      |11.691      |2.843       
+
+Validation mAP: 0.392
+
+Saving model with new best val mAP: 0.392
+
+Saving model with new best validation loss: 65.398
+
+=== EPOCH 70/119 ===
+Learning Rate = 8.388608000000005e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+76.101      |14.810      |28.024      |9.250       |1.902       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+66.115      |19.581      |32.012      |11.518      |3.004       
+
+=== EPOCH 71/119 ===
+Learning Rate = 8.388608000000005e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+75.535      |14.569      |27.587      |9.418       |1.891       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.660      |19.498      |31.594      |11.651      |2.917       
+
+=== EPOCH 72/119 ===
+Learning Rate = 8.388608000000005e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+75.233      |14.534      |27.470      |9.290       |1.913       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+66.241      |19.754      |31.988      |11.369      |3.129       
+
+=== EPOCH 73/119 ===
+Learning Rate = 6.710886400000004e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+74.668      |14.452      |27.202      |9.197       |1.840       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.352      |19.410      |31.981      |11.119      |2.842       
+
+Saving model with new best validation loss: 65.352
+
+=== EPOCH 74/119 ===
+Learning Rate = 6.710886400000004e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+74.090      |13.999      |26.994      |9.147       |2.017       
+
+Train mAP: 0.480
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.376      |19.315      |31.209      |12.028      |2.825       
+
+Validation mAP: 0.379
+
+=== EPOCH 75/119 ===
+Learning Rate = 6.710886400000004e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+74.023      |14.512      |26.554      |9.187       |1.877       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.783      |19.390      |32.858      |10.622      |2.913       
+
+=== EPOCH 76/119 ===
+Learning Rate = 5.3687091200000036e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+74.060      |14.328      |27.028      |9.035       |1.818       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.610      |19.273      |31.152      |12.322      |2.864       
+
+=== EPOCH 77/119 ===
+Learning Rate = 5.3687091200000036e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+73.142      |13.914      |26.749      |8.816       |1.852       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.534      |19.364      |31.489      |11.822      |2.859       
+
+=== EPOCH 78/119 ===
+Learning Rate = 5.3687091200000036e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+72.987      |13.920      |26.519      |9.017       |1.752       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.602      |19.288      |32.211      |11.272      |2.830       
+
+=== EPOCH 79/119 ===
+Learning Rate = 4.2949672960000034e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+72.182      |13.696      |26.225      |8.819       |1.699       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.068      |19.278      |31.280      |11.643      |2.867       
+
+Validation mAP: 0.397
+
+Saving model with new best val mAP: 0.397
+
+Saving model with new best validation loss: 65.068
+
+=== EPOCH 80/119 ===
+Learning Rate = 4.2949672960000034e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+72.193      |13.683      |26.303      |8.758       |1.738       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.782      |19.543      |31.678      |11.596      |2.965       
+
+=== EPOCH 81/119 ===
+Learning Rate = 4.2949672960000034e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+72.100      |13.932      |25.890      |8.769       |1.827       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.947      |19.465      |32.455      |11.063      |2.964       
+
+=== EPOCH 82/119 ===
+Learning Rate = 4.2949672960000034e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+71.734      |13.660      |26.014      |8.650       |1.753       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.479      |19.357      |31.180      |12.063      |2.878       
+
+=== EPOCH 83/119 ===
+Learning Rate = 3.435973836800003e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+71.212      |13.651      |25.616      |8.537       |1.777       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.793      |19.341      |31.167      |12.288      |2.997       
+
+=== EPOCH 84/119 ===
+Learning Rate = 3.435973836800003e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+71.189      |13.674      |25.516      |8.566       |1.827       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.570      |19.276      |31.615      |11.712      |2.967       
+
+Validation mAP: 0.408
+
+Saving model with new best val mAP: 0.408
+
+=== EPOCH 85/119 ===
+Learning Rate = 3.435973836800003e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+71.331      |13.801      |25.699      |8.476       |1.772       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+66.079      |19.579      |32.193      |11.255      |3.053       
+
+=== EPOCH 86/119 ===
+Learning Rate = 2.7487790694400027e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+71.252      |13.890      |25.585      |8.446       |1.771       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.973      |19.421      |32.067      |11.402      |3.083       
+
+=== EPOCH 87/119 ===
+Learning Rate = 2.7487790694400027e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+70.160      |13.385      |25.266      |8.335       |1.638       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.825      |19.378      |31.892      |11.560      |2.995       
+
+=== EPOCH 88/119 ===
+Learning Rate = 2.7487790694400027e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+70.322      |13.467      |25.264      |8.420       |1.654       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.910      |19.335      |32.189      |11.407      |2.979       
+
+=== EPOCH 89/119 ===
+Learning Rate = 2.1990232555520022e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+69.905      |13.317      |25.034      |8.352       |1.705       
+
+Train mAP: 0.512
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.518      |19.129      |31.159      |12.315      |2.915       
+
+Validation mAP: 0.391
+
+=== EPOCH 90/119 ===
+Learning Rate = 2.1990232555520022e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+70.142      |13.367      |25.167      |8.339       |1.788       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.481      |19.183      |31.462      |11.976      |2.860       
+
+=== EPOCH 91/119 ===
+Learning Rate = 2.1990232555520022e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+69.910      |13.470      |25.035      |8.183       |1.759       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.572      |19.250      |31.175      |12.301      |2.845       
+
+=== EPOCH 92/119 ===
+Learning Rate = 1.7592186044416018e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+69.790      |13.557      |24.799      |8.295       |1.691       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.618      |19.254      |32.074      |11.447      |2.844       
+
+=== EPOCH 93/119 ===
+Learning Rate = 1.7592186044416018e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+70.005      |13.574      |25.044      |8.171       |1.784       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.532      |19.167      |31.588      |11.858      |2.918       
+
+=== EPOCH 94/119 ===
+Learning Rate = 1.7592186044416018e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+69.450      |13.139      |24.882      |8.253       |1.756       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.562      |19.184      |31.999      |11.396      |2.983       
+
+Validation mAP: 0.398
+
+=== EPOCH 95/119 ===
+Learning Rate = 1.4073748835532815e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+69.354      |13.318      |24.854      |8.107       |1.669       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.398      |19.168      |32.064      |11.259      |2.907       
+
+=== EPOCH 96/119 ===
+Learning Rate = 1.4073748835532815e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+69.313      |13.139      |24.958      |8.087       |1.733       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.517      |19.176      |31.983      |11.500      |2.858       
+
+=== EPOCH 97/119 ===
+Learning Rate = 1.4073748835532815e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+69.754      |13.293      |25.165      |8.195       |1.715       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.410      |19.114      |31.895      |11.533      |2.869       
+
+=== EPOCH 98/119 ===
+Learning Rate = 1.1258999068426253e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+68.433      |13.117      |24.254      |8.065       |1.621       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.654      |19.203      |31.674      |11.914      |2.863       
+
+=== EPOCH 99/119 ===
+Learning Rate = 1.1258999068426253e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+69.236      |13.481      |24.577      |8.113       |1.700       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.621      |19.286      |31.594      |11.860      |2.881       
+
+Validation mAP: 0.403
+
+=== EPOCH 100/119 ===
+Learning Rate = 1.1258999068426253e-05
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+68.447      |13.178      |24.240      |8.056       |1.616       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.317      |19.121      |31.676      |11.628      |2.893       
+
+=== EPOCH 101/119 ===
+Learning Rate = 9.007199254741003e-06
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+69.082      |13.254      |24.670      |8.190       |1.620       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.544      |19.209      |31.643      |11.842      |2.851       
+
+=== EPOCH 102/119 ===
+Learning Rate = 9.007199254741003e-06
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+68.416      |13.080      |24.252      |7.959       |1.785       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.418      |19.090      |32.066      |11.373      |2.889       
+
+=== EPOCH 103/119 ===
+Learning Rate = 9.007199254741003e-06
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+69.214      |13.196      |24.832      |8.068       |1.786       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.430      |19.159      |31.786      |11.651      |2.834       
+
+=== EPOCH 104/119 ===
+Learning Rate = 7.205759403792802e-06
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+68.234      |13.093      |24.207      |7.965       |1.644       
+
+Train mAP: 0.522
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.453      |19.086      |31.623      |11.891      |2.853       
+
+Validation mAP: 0.403
+
+=== EPOCH 105/119 ===
+Learning Rate = 7.205759403792802e-06
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+68.625      |13.307      |24.416      |7.971       |1.613       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.397      |19.187      |31.830      |11.521      |2.859       
+
+=== EPOCH 106/119 ===
+Learning Rate = 7.205759403792802e-06
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+68.090      |12.916      |24.436      |7.870       |1.556       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.485      |19.207      |31.784      |11.642      |2.853       
+
+=== EPOCH 107/119 ===
+Learning Rate = 5.764607523034242e-06
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+68.233      |13.022      |24.315      |7.951       |1.638       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.377      |19.052      |31.481      |12.006      |2.838       
+
+=== EPOCH 108/119 ===
+Learning Rate = 5.764607523034242e-06
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+67.631      |12.834      |24.005      |7.898       |1.593       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.453      |19.206      |32.006      |11.366      |2.875       
+
+=== EPOCH 109/119 ===
+Learning Rate = 5.764607523034242e-06
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+67.856      |12.927      |24.120      |7.857       |1.656       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.439      |19.161      |31.987      |11.395      |2.896       
+
+Validation mAP: 0.403
+
+=== EPOCH 110/119 ===
+Learning Rate = 4.611686018427394e-06
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+68.310      |13.115      |24.369      |7.772       |1.762       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.575      |19.206      |31.787      |11.731      |2.851       
+
+=== EPOCH 111/119 ===
+Learning Rate = 4.611686018427394e-06
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+67.925      |12.858      |24.208      |7.893       |1.679       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.397      |19.091      |31.823      |11.606      |2.877       
+
+=== EPOCH 112/119 ===
+Learning Rate = 4.611686018427394e-06
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+67.615      |12.853      |23.952      |7.935       |1.592       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.488      |19.155      |31.530      |11.921      |2.882       
+
+=== EPOCH 113/119 ===
+Learning Rate = 3.6893488147419155e-06
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+68.352      |13.240      |24.243      |7.987       |1.602       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.487      |19.131      |31.995      |11.500      |2.860       
+
+=== EPOCH 114/119 ===
+Learning Rate = 3.6893488147419155e-06
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+68.018      |12.998      |24.206      |7.814       |1.724       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.413      |19.126      |31.740      |11.672      |2.876       
+
+Validation mAP: 0.409
+
+Saving model with new best val mAP: 0.409
+
+=== EPOCH 115/119 ===
+Learning Rate = 3.6893488147419155e-06
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+67.693      |12.988      |24.001      |7.957       |1.474       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.527      |19.202      |31.624      |11.811      |2.890       
+
+=== EPOCH 116/119 ===
+Learning Rate = 2.9514790517935326e-06
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+68.017      |13.053      |24.022      |7.951       |1.722       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.469      |19.124      |31.576      |11.889      |2.881       
+
+=== EPOCH 117/119 ===
+Learning Rate = 2.9514790517935326e-06
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+68.048      |12.968      |24.392      |7.813       |1.609       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.467      |19.122      |31.472      |11.967      |2.907       
+
+=== EPOCH 118/119 ===
+Learning Rate = 2.9514790517935326e-06
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+68.387      |13.122      |24.305      |7.956       |1.740       
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.450      |19.101      |32.064      |11.437      |2.848       
+
+=== EPOCH 119/119 ===
+Learning Rate = 2.361183241434826e-06
+
+TRAIN losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+68.311      |13.092      |24.375      |7.903       |1.680       
+
+Train mAP: 0.526
+
+VAL losses
+Total Loss  |Box Loss    |Conf Loss   |No Obj Loss |Class Loss  
+------------ ------------ ------------ ------------ ------------
+65.364      |19.095      |32.317      |11.005      |2.948       
+
+Validation mAP: 0.403
+Saving last model
+
+***Script finished: 14:47:33
+
+Time elapsed: 5:15:37.108961
