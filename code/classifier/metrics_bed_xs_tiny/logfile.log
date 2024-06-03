@@ -1,0 +1,441 @@
+Squeeze Classifier. First Test.
+DFire Removed wrong images: 0
+DFire empty images: 31
+DFire only smoke images: 17
+DFire only fire images: 2
+DFire smoke and fire images: 14
+
+TRAIN DFIRE dataset
+DFire Removed wrong images: 0
+DFire empty images: 7833
+DFire only smoke images: 4681
+DFire only fire images: 944
+DFire smoke and fire images: 3763
+Train dataset len: 17221
+
+TEST DFire dataset
+DFire Removed wrong images: 0
+DFire empty images: 2005
+DFire only smoke images: 1186
+DFire only fire images: 220
+DFire smoke and fire images: 895
+Test dataset len: 4306
+Using BED Classifier
+Model shape is tensor([[-0.2721, -0.1260],
+        [-0.2072, -0.0978],
+        [-0.2583, -0.1550],
+        [-0.2011, -0.1283]], device='cuda:0', grad_fn=<CatBackward0>)
+BED Model Arquitecture
+BED_CLASSIFIER(
+  (model): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout2d(p=0.3, inplace=False)
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Conv2d(64, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (6): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (7): ReLU()
+    (8): Dropout2d(p=0.3, inplace=False)
+    (9): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (10): Conv2d(24, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (11): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (12): ReLU()
+    (13): Conv2d(16, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (14): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (15): ReLU()
+    (16): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (17): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (18): ReLU()
+    (19): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (20): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (21): ReLU()
+    (22): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (23): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (24): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (25): ReLU()
+    (26): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (27): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (28): ReLU()
+    (29): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (30): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (31): ReLU()
+    (32): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (33): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (34): ReLU()
+    (35): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (36): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (37): ReLU()
+    (38): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (39): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (40): ReLU()
+  )
+  (pool): AdaptiveAvgPool2d(output_size=(1, 1))
+  (smoke): Sequential(
+    (0): Dropout(p=0.2, inplace=False)
+    (1): Linear(in_features=64, out_features=16, bias=True)
+    (2): ReLU()
+    (3): Linear(in_features=16, out_features=1, bias=True)
+  )
+  (fire): Sequential(
+    (0): Dropout(p=0.2, inplace=False)
+    (1): Linear(in_features=64, out_features=16, bias=True)
+    (2): ReLU()
+    (3): Linear(in_features=16, out_features=1, bias=True)
+  )
+)
+
+Trainable parameters = 103554
+Total parameters = 103554
+
+Starting script
+
+Device: cuda
+Learning Rate: 0.001
+Weight Decay: 0.0001
+Batch Size: 64
+IMG DIMS: (224, 224)
+W: 224
+H: 224
+Loss Function: BCE
+
+***Start Training: 06:24:23
+
+Initializing Weights
+
+=== EPOCH 0/74 ===
+Learning Rate = 0.001
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+118.941     |87.906      |31.035      
+
+
+VAL losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+114.724     |85.631      |29.093      
+
+VAL Metrics
+SMOKE -> Precision: 0.610 - Recall: 0.428 - Accuracy: 0.593 - F1: 0.503
+FIRE -> Precision: 0.749 - Recall: 0.148 - Accuracy: 0.767 - F1: 0.247
+
+Saving model with new best validation loss: 114.724
+
+=== EPOCH 1/74 ===
+Learning Rate = 0.001
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+111.849     |85.377      |26.472      
+
+
+VAL losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+104.166     |81.219      |22.947      
+
+VAL Metrics
+SMOKE -> Precision: 0.596 - Recall: 0.702 - Accuracy: 0.628 - F1: 0.645
+FIRE -> Precision: 0.713 - Recall: 0.650 - Accuracy: 0.842 - F1: 0.680
+
+Saving model with new best validation loss: 104.166
+
+=== EPOCH 2/74 ===
+Learning Rate = 0.001
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+105.198     |81.774      |23.424      
+
+
+VAL losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+97.936      |78.545      |19.390      
+
+VAL Metrics
+SMOKE -> Precision: 0.677 - Recall: 0.580 - Accuracy: 0.665 - F1: 0.625
+FIRE -> Precision: 0.777 - Recall: 0.708 - Accuracy: 0.872 - F1: 0.741
+
+Saving model with new best validation loss: 97.936
+
+=== EPOCH 3/74 ===
+Learning Rate = 0.001
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+101.310     |79.605      |21.705      
+
+
+VAL losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+93.972      |75.593      |18.378      
+
+VAL Metrics
+SMOKE -> Precision: 0.666 - Recall: 0.700 - Accuracy: 0.687 - F1: 0.683
+FIRE -> Precision: 0.757 - Recall: 0.785 - Accuracy: 0.879 - F1: 0.770
+
+Saving model with new best validation loss: 93.972
+
+=== EPOCH 4/74 ===
+Learning Rate = 0.001
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+97.638      |77.294      |20.345      
+
+
+VAL losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+90.417      |73.487      |16.929      
+
+VAL Metrics
+SMOKE -> Precision: 0.654 - Recall: 0.793 - Accuracy: 0.698 - F1: 0.717
+FIRE -> Precision: 0.794 - Recall: 0.774 - Accuracy: 0.889 - F1: 0.784
+
+Saving model with new best validation loss: 90.417
+
+=== EPOCH 5/74 ===
+Learning Rate = 0.001
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+94.278      |74.985      |19.293      
+
+
+VAL losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+85.296      |69.849      |15.446      
+
+VAL Metrics
+SMOKE -> Precision: 0.735 - Recall: 0.650 - Accuracy: 0.719 - F1: 0.690
+FIRE -> Precision: 0.801 - Recall: 0.810 - Accuracy: 0.899 - F1: 0.805
+
+Saving model with new best validation loss: 85.296
+
+=== EPOCH 6/74 ===
+Learning Rate = 0.001
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+91.794      |72.992      |18.801      
+
+
+VAL losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+79.344      |64.866      |14.478      
+
+VAL Metrics
+SMOKE -> Precision: 0.808 - Recall: 0.643 - Accuracy: 0.755 - F1: 0.716
+FIRE -> Precision: 0.797 - Recall: 0.825 - Accuracy: 0.900 - F1: 0.811
+
+Saving model with new best validation loss: 79.344
+
+=== EPOCH 7/74 ===
+Learning Rate = 0.001
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+89.056      |71.073      |17.983      
+
+
+VAL losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+78.018      |63.448      |14.571      
+
+VAL Metrics
+SMOKE -> Precision: 0.776 - Recall: 0.702 - Accuracy: 0.759 - F1: 0.737
+FIRE -> Precision: 0.835 - Recall: 0.798 - Accuracy: 0.907 - F1: 0.816
+
+Saving model with new best validation loss: 78.018
+
+=== EPOCH 8/74 ===
+Learning Rate = 0.001
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+86.557      |69.198      |17.359      
+
+
+VAL losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+75.681      |62.383      |13.298      
+
+VAL Metrics
+SMOKE -> Precision: 0.801 - Recall: 0.682 - Accuracy: 0.765 - F1: 0.737
+FIRE -> Precision: 0.849 - Recall: 0.831 - Accuracy: 0.918 - F1: 0.840
+
+Saving model with new best validation loss: 75.681
+
+=== EPOCH 9/74 ===
+Learning Rate = 0.001
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+85.389      |68.232      |17.157      
+
+
+VAL losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+82.744      |68.032      |14.712      
+
+VAL Metrics
+SMOKE -> Precision: 0.888 - Recall: 0.504 - Accuracy: 0.731 - F1: 0.643
+FIRE -> Precision: 0.889 - Recall: 0.740 - Accuracy: 0.909 - F1: 0.808
+
+=== EPOCH 10/74 ===
+Learning Rate = 0.001
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+84.133      |67.364      |16.769      
+
+
+VAL losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+71.932      |59.145      |12.788      
+
+VAL Metrics
+SMOKE -> Precision: 0.780 - Recall: 0.760 - Accuracy: 0.781 - F1: 0.770
+FIRE -> Precision: 0.842 - Recall: 0.852 - Accuracy: 0.920 - F1: 0.847
+
+Saving model with new best validation loss: 71.932
+
+=== EPOCH 11/74 ===
+Learning Rate = 0.001
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+83.304      |66.593      |16.711      
+
+
+VAL losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+71.159      |58.202      |12.956      
+
+VAL Metrics
+SMOKE -> Precision: 0.824 - Recall: 0.714 - Accuracy: 0.789 - F1: 0.765
+FIRE -> Precision: 0.866 - Recall: 0.823 - Accuracy: 0.921 - F1: 0.844
+
+Saving model with new best validation loss: 71.159
+
+=== EPOCH 12/74 ===
+Learning Rate = 0.001
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+80.938      |64.985      |15.953      
+
+
+VAL losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+70.054      |56.902      |13.152      
+
+VAL Metrics
+SMOKE -> Precision: 0.805 - Recall: 0.764 - Accuracy: 0.798 - F1: 0.784
+FIRE -> Precision: 0.871 - Recall: 0.816 - Accuracy: 0.921 - F1: 0.843
+
+Saving model with new best validation loss: 70.054
+
+=== EPOCH 13/74 ===
+Learning Rate = 0.001
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+79.604      |63.978      |15.626      
+
+
+VAL losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+69.512      |56.211      |13.301      
+
+VAL Metrics
+SMOKE -> Precision: 0.850 - Recall: 0.683 - Accuracy: 0.789 - F1: 0.757
+FIRE -> Precision: 0.929 - Recall: 0.746 - Accuracy: 0.920 - F1: 0.828
+
+Saving model with new best validation loss: 69.512
+
+=== EPOCH 14/74 ===
+Learning Rate = 0.001
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+78.782      |63.187      |15.596      
+
+
+VAL losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+75.316      |61.314      |14.002      
+
+VAL Metrics
+SMOKE -> Precision: 0.700 - Recall: 0.937 - Accuracy: 0.776 - F1: 0.801
+FIRE -> Precision: 0.775 - Recall: 0.912 - Accuracy: 0.909 - F1: 0.838
+
+=== EPOCH 15/74 ===
+Learning Rate = 0.001
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+77.869      |62.459      |15.411      
+
+
+VAL losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+66.493      |54.654      |11.839      
+
+VAL Metrics
+SMOKE -> Precision: 0.761 - Recall: 0.881 - Accuracy: 0.809 - F1: 0.817
+FIRE -> Precision: 0.841 - Recall: 0.895 - Accuracy: 0.929 - F1: 0.867
+
+Saving model with new best validation loss: 66.493
+
+=== EPOCH 16/74 ===
+Learning Rate = 0.001
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+77.299      |62.073      |15.226      
+
+
+VAL losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+71.076      |58.105      |12.971      
+
+VAL Metrics
+SMOKE -> Precision: 0.732 - Recall: 0.898 - Accuracy: 0.793 - F1: 0.807
+FIRE -> Precision: 0.807 - Recall: 0.911 - Accuracy: 0.920 - F1: 0.856
+
+=== EPOCH 17/74 ===
+Learning Rate = 0.001

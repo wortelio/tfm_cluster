@@ -1,0 +1,1766 @@
+SqueezeNet Classifier. First Test.
+DFire Removed wrong images: 0
+Starting script
+
+Device: cuda
+Learning Rate: 0.0005
+Weight Decay: 0.0001
+Batch Size: 64
+IMG DIMS: (224, 224)
+W: 224
+H: 224
+Using BED Classifier
+Model shape is {'smoke': tensor([[-0.1417],
+        [-0.2848],
+        [-0.1101],
+        [-0.1147]], device='cuda:0', grad_fn=<SliceBackward0>), 'fire': tensor([[-0.1845],
+        [-0.0979],
+        [-0.1260],
+        [-0.1443]], device='cuda:0', grad_fn=<SliceBackward0>)}
+BED Model Arquitecture
+BED_CLASSIFIER(
+  (model): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (2): ReLU()
+    (3): Dropout2d(p=0.3, inplace=False)
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (5): Conv2d(64, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (6): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (7): ReLU()
+    (8): Dropout2d(p=0.3, inplace=False)
+    (9): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (10): Conv2d(24, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (11): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (12): ReLU()
+    (13): Conv2d(16, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (14): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (15): ReLU()
+    (16): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (17): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (18): ReLU()
+    (19): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (20): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (21): ReLU()
+    (22): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (23): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (24): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (25): ReLU()
+    (26): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (27): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (28): ReLU()
+    (29): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (30): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (31): ReLU()
+    (32): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (33): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (34): ReLU()
+    (35): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (36): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (37): ReLU()
+    (38): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (39): ReLU()
+    (40): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (41): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (42): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (43): ReLU()
+    (44): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (45): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (46): ReLU()
+    (47): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (48): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (49): ReLU()
+    (50): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (51): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (52): ReLU()
+    (53): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (54): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (55): ReLU()
+    (56): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (57): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (58): ReLU()
+    (59): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+    (60): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (61): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (62): ReLU()
+    (63): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (64): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=True)
+    (65): ReLU()
+  )
+  (pool): AdaptiveAvgPool2d(output_size=(1, 1))
+  (smoke): Sequential(
+    (0): Dropout(p=0.2, inplace=False)
+    (1): Linear(in_features=128, out_features=64, bias=True)
+    (2): ReLU()
+    (3): Linear(in_features=64, out_features=1, bias=True)
+  )
+  (fire): Sequential(
+    (0): Dropout(p=0.2, inplace=False)
+    (1): Linear(in_features=128, out_features=64, bias=True)
+    (2): ReLU()
+    (3): Linear(in_features=64, out_features=1, bias=True)
+  )
+)
+
+Trainable parameters = 453954
+Total parameters = 453954
+
+Loss Function: BCE
+
+TRAIN DFIRE dataset
+DFire Removed wrong images: 0
+Train dataset len: 17221
+
+TEST DFire dataset
+DFire Removed wrong images: 0
+Test dataset len: 4306
+
+***Start Training: 20:59:11
+
+Initializing Weights
+
+=== EPOCH 0/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+2.049       |1.386       |0.663       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+2.020       |1.386       |0.635       
+
+
+Saving model with new best validation loss: 2.020
+
+=== EPOCH 1/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+2.002       |1.385       |0.617       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.983       |1.385       |0.598       
+
+
+Saving model with new best validation loss: 1.983
+
+=== EPOCH 2/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.974       |1.383       |0.591       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.964       |1.384       |0.579       
+
+
+Saving model with new best validation loss: 1.964
+
+=== EPOCH 3/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.959       |1.380       |0.580       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.951       |1.381       |0.570       
+
+
+Saving model with new best validation loss: 1.951
+
+=== EPOCH 4/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.949       |1.374       |0.575       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.945       |1.378       |0.567       
+
+
+Saving model with new best validation loss: 1.945
+
+=== EPOCH 5/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.936       |1.367       |0.569       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.934       |1.373       |0.561       
+
+
+Saving model with new best validation loss: 1.934
+
+=== EPOCH 6/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.926       |1.364       |0.562       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.918       |1.365       |0.552       
+
+
+Saving model with new best validation loss: 1.918
+
+=== EPOCH 7/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.918       |1.361       |0.556       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.904       |1.362       |0.542       
+
+
+Saving model with new best validation loss: 1.904
+
+=== EPOCH 8/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.903       |1.358       |0.545       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.875       |1.354       |0.521       
+
+
+Saving model with new best validation loss: 1.875
+
+=== EPOCH 9/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.891       |1.359       |0.532       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.861       |1.359       |0.502       
+
+
+Saving model with new best validation loss: 1.861
+
+=== EPOCH 10/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.869       |1.358       |0.511       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.820       |1.355       |0.465       
+
+
+Saving model with new best validation loss: 1.820
+
+=== EPOCH 11/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.848       |1.354       |0.495       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.780       |1.344       |0.435       
+
+
+Saving model with new best validation loss: 1.780
+
+=== EPOCH 12/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.831       |1.351       |0.480       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.768       |1.338       |0.430       
+
+
+Saving model with new best validation loss: 1.768
+
+=== EPOCH 13/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.814       |1.346       |0.468       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.761       |1.336       |0.425       
+
+
+Saving model with new best validation loss: 1.761
+
+=== EPOCH 14/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.801       |1.345       |0.455       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.748       |1.336       |0.412       
+
+
+Saving model with new best validation loss: 1.748
+
+=== EPOCH 15/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.787       |1.338       |0.448       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.732       |1.330       |0.403       
+
+
+Saving model with new best validation loss: 1.732
+
+=== EPOCH 16/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.781       |1.341       |0.441       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.727       |1.330       |0.397       
+
+
+Saving model with new best validation loss: 1.727
+
+=== EPOCH 17/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.771       |1.336       |0.434       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.705       |1.318       |0.387       
+
+
+Saving model with new best validation loss: 1.705
+
+=== EPOCH 18/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.758       |1.330       |0.428       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.700       |1.317       |0.383       
+
+
+Saving model with new best validation loss: 1.700
+
+=== EPOCH 19/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.749       |1.325       |0.424       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.689       |1.313       |0.377       
+
+
+Saving model with new best validation loss: 1.689
+
+=== EPOCH 20/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.741       |1.324       |0.417       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.682       |1.309       |0.373       
+
+
+Saving model with new best validation loss: 1.682
+
+=== EPOCH 21/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.736       |1.322       |0.414       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.673       |1.304       |0.369       
+
+
+Saving model with new best validation loss: 1.673
+
+=== EPOCH 22/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.722       |1.314       |0.407       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.651       |1.290       |0.361       
+
+
+Saving model with new best validation loss: 1.651
+
+=== EPOCH 23/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.708       |1.305       |0.402       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.641       |1.279       |0.362       
+
+
+Saving model with new best validation loss: 1.641
+
+=== EPOCH 24/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.699       |1.299       |0.401       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.629       |1.273       |0.356       
+
+
+Saving model with new best validation loss: 1.629
+
+=== EPOCH 25/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.688       |1.292       |0.396       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.621       |1.270       |0.351       
+
+
+Saving model with new best validation loss: 1.621
+
+=== EPOCH 26/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.669       |1.278       |0.390       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.585       |1.238       |0.347       
+
+
+Saving model with new best validation loss: 1.585
+
+=== EPOCH 27/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.660       |1.275       |0.385       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.577       |1.230       |0.347       
+
+
+Saving model with new best validation loss: 1.577
+
+=== EPOCH 28/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.646       |1.263       |0.383       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.564       |1.219       |0.344       
+
+
+Saving model with new best validation loss: 1.564
+
+=== EPOCH 29/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.636       |1.255       |0.380       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.552       |1.211       |0.341       
+
+
+Saving model with new best validation loss: 1.552
+
+=== EPOCH 30/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.626       |1.246       |0.379       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.521       |1.188       |0.333       
+
+
+Saving model with new best validation loss: 1.521
+
+=== EPOCH 31/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.616       |1.240       |0.376       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.523       |1.186       |0.337       
+
+
+=== EPOCH 32/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.589       |1.219       |0.370       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.486       |1.159       |0.327       
+
+
+Saving model with new best validation loss: 1.486
+
+=== EPOCH 33/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.589       |1.223       |0.366       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.481       |1.157       |0.324       
+
+
+Saving model with new best validation loss: 1.481
+
+=== EPOCH 34/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.580       |1.215       |0.366       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.471       |1.143       |0.328       
+
+
+Saving model with new best validation loss: 1.471
+
+=== EPOCH 35/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.565       |1.203       |0.361       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.452       |1.132       |0.321       
+
+
+Saving model with new best validation loss: 1.452
+
+=== EPOCH 36/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.565       |1.207       |0.358       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.468       |1.146       |0.321       
+
+
+=== EPOCH 37/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.551       |1.196       |0.356       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.440       |1.123       |0.317       
+
+
+Saving model with new best validation loss: 1.440
+
+=== EPOCH 38/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.538       |1.189       |0.349       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.407       |1.092       |0.315       
+
+
+Saving model with new best validation loss: 1.407
+
+=== EPOCH 39/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.519       |1.168       |0.351       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.407       |1.095       |0.312       
+
+
+=== EPOCH 40/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.509       |1.163       |0.347       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.381       |1.076       |0.305       
+
+
+Saving model with new best validation loss: 1.381
+
+=== EPOCH 41/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.501       |1.155       |0.346       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.363       |1.059       |0.304       
+
+
+Saving model with new best validation loss: 1.363
+
+=== EPOCH 42/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.479       |1.139       |0.340       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.339       |1.039       |0.300       
+
+
+Saving model with new best validation loss: 1.339
+
+=== EPOCH 43/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.479       |1.142       |0.337       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.353       |1.051       |0.302       
+
+
+=== EPOCH 44/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.468       |1.130       |0.337       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.306       |1.017       |0.288       
+
+
+Saving model with new best validation loss: 1.306
+
+=== EPOCH 45/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.453       |1.122       |0.331       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.311       |1.018       |0.293       
+
+
+=== EPOCH 46/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.443       |1.116       |0.327       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.310       |1.022       |0.287       
+
+
+=== EPOCH 47/99 ===
+Learning Rate = 0.0005
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.439       |1.111       |0.328       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.343       |1.049       |0.294       
+
+
+=== EPOCH 48/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.418       |1.097       |0.321       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.254       |0.981       |0.273       
+
+
+Saving model with new best validation loss: 1.254
+
+=== EPOCH 49/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.408       |1.091       |0.317       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.237       |0.965       |0.272       
+
+
+Saving model with new best validation loss: 1.237
+
+=== EPOCH 50/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.396       |1.084       |0.312       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.239       |0.975       |0.264       
+
+
+=== EPOCH 51/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.384       |1.074       |0.310       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.230       |0.962       |0.268       
+
+
+Saving model with new best validation loss: 1.230
+
+=== EPOCH 52/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.360       |1.055       |0.305       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.192       |0.937       |0.256       
+
+
+Saving model with new best validation loss: 1.192
+
+=== EPOCH 53/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.359       |1.055       |0.303       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.194       |0.944       |0.250       
+
+
+=== EPOCH 54/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.349       |1.043       |0.306       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.188       |0.937       |0.251       
+
+
+Saving model with new best validation loss: 1.188
+
+=== EPOCH 55/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.341       |1.044       |0.297       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.137       |0.897       |0.240       
+
+
+Saving model with new best validation loss: 1.137
+
+=== EPOCH 56/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.323       |1.032       |0.291       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.124       |0.889       |0.235       
+
+
+Saving model with new best validation loss: 1.124
+
+=== EPOCH 57/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.319       |1.033       |0.287       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.131       |0.896       |0.236       
+
+
+=== EPOCH 58/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.304       |1.020       |0.284       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.143       |0.918       |0.224       
+
+
+=== EPOCH 59/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.301       |1.019       |0.282       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.095       |0.871       |0.224       
+
+
+Saving model with new best validation loss: 1.095
+
+=== EPOCH 60/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.272       |0.994       |0.278       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.084       |0.856       |0.228       
+
+
+Saving model with new best validation loss: 1.084
+
+=== EPOCH 61/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.277       |1.001       |0.276       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.067       |0.848       |0.219       
+
+
+Saving model with new best validation loss: 1.067
+
+=== EPOCH 62/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.268       |0.995       |0.272       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.091       |0.866       |0.225       
+
+
+=== EPOCH 63/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.250       |0.984       |0.266       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.065       |0.848       |0.217       
+
+
+Saving model with new best validation loss: 1.065
+
+=== EPOCH 64/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.252       |0.982       |0.270       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.075       |0.861       |0.214       
+
+
+=== EPOCH 65/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.241       |0.974       |0.267       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.016       |0.814       |0.202       
+
+
+Saving model with new best validation loss: 1.016
+
+=== EPOCH 66/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.222       |0.962       |0.259       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.016       |0.806       |0.210       
+
+
+Saving model with new best validation loss: 1.016
+
+=== EPOCH 67/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.229       |0.972       |0.258       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.999       |0.801       |0.198       
+
+
+Saving model with new best validation loss: 0.999
+
+=== EPOCH 68/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.219       |0.962       |0.257       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.008       |0.808       |0.200       
+
+
+=== EPOCH 69/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.201       |0.948       |0.253       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.972       |0.779       |0.194       
+
+
+Saving model with new best validation loss: 0.972
+
+=== EPOCH 70/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.197       |0.941       |0.256       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.953       |0.759       |0.194       
+
+
+Saving model with new best validation loss: 0.953
+
+=== EPOCH 71/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.189       |0.935       |0.254       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.950       |0.758       |0.192       
+
+
+Saving model with new best validation loss: 0.950
+
+=== EPOCH 72/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.179       |0.931       |0.248       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.961       |0.772       |0.189       
+
+
+=== EPOCH 73/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.170       |0.925       |0.245       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.983       |0.798       |0.185       
+
+
+=== EPOCH 74/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.167       |0.925       |0.242       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.938       |0.753       |0.185       
+
+
+Saving model with new best validation loss: 0.938
+
+=== EPOCH 75/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.163       |0.918       |0.245       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.949       |0.757       |0.191       
+
+
+=== EPOCH 76/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.148       |0.910       |0.238       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.918       |0.732       |0.186       
+
+
+Saving model with new best validation loss: 0.918
+
+=== EPOCH 77/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.148       |0.909       |0.239       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.950       |0.759       |0.191       
+
+
+=== EPOCH 78/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.143       |0.903       |0.240       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.920       |0.731       |0.189       
+
+
+=== EPOCH 79/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.143       |0.906       |0.237       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.895       |0.720       |0.175       
+
+
+Saving model with new best validation loss: 0.895
+
+=== EPOCH 80/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.134       |0.900       |0.234       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.900       |0.719       |0.181       
+
+
+=== EPOCH 81/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.125       |0.885       |0.240       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.911       |0.733       |0.178       
+
+
+=== EPOCH 82/99 ===
+Learning Rate = 0.0004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.125       |0.890       |0.235       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.899       |0.726       |0.173       
+
+
+=== EPOCH 83/99 ===
+Learning Rate = 0.00032
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.104       |0.872       |0.231       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.890       |0.719       |0.171       
+
+
+Saving model with new best validation loss: 0.890
+
+=== EPOCH 84/99 ===
+Learning Rate = 0.00032
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.095       |0.867       |0.228       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.854       |0.681       |0.173       
+
+
+Saving model with new best validation loss: 0.854
+
+=== EPOCH 85/99 ===
+Learning Rate = 0.00032
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.093       |0.864       |0.229       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.872       |0.697       |0.175       
+
+
+=== EPOCH 86/99 ===
+Learning Rate = 0.00032
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.091       |0.859       |0.232       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.860       |0.688       |0.172       
+
+
+=== EPOCH 87/99 ===
+Learning Rate = 0.00032
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.089       |0.868       |0.221       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.867       |0.694       |0.174       
+
+
+=== EPOCH 88/99 ===
+Learning Rate = 0.00025600000000000004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.076       |0.852       |0.224       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.857       |0.689       |0.168       
+
+
+=== EPOCH 89/99 ===
+Learning Rate = 0.00025600000000000004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.053       |0.831       |0.222       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.849       |0.683       |0.166       
+
+
+Saving model with new best validation loss: 0.849
+
+=== EPOCH 90/99 ===
+Learning Rate = 0.00025600000000000004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.070       |0.849       |0.221       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.856       |0.688       |0.168       
+
+
+=== EPOCH 91/99 ===
+Learning Rate = 0.00025600000000000004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.052       |0.835       |0.218       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.841       |0.670       |0.171       
+
+
+Saving model with new best validation loss: 0.841
+
+=== EPOCH 92/99 ===
+Learning Rate = 0.00025600000000000004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.064       |0.844       |0.220       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.829       |0.656       |0.173       
+
+
+Saving model with new best validation loss: 0.829
+
+=== EPOCH 93/99 ===
+Learning Rate = 0.00025600000000000004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.064       |0.842       |0.222       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.828       |0.665       |0.163       
+
+
+Saving model with new best validation loss: 0.828
+
+=== EPOCH 94/99 ===
+Learning Rate = 0.00025600000000000004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.044       |0.827       |0.218       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.841       |0.675       |0.166       
+
+
+=== EPOCH 95/99 ===
+Learning Rate = 0.00025600000000000004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.054       |0.837       |0.217       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.826       |0.663       |0.163       
+
+
+Saving model with new best validation loss: 0.826
+
+=== EPOCH 96/99 ===
+Learning Rate = 0.00025600000000000004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.054       |0.839       |0.215       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.817       |0.652       |0.164       
+
+
+Saving model with new best validation loss: 0.817
+
+=== EPOCH 97/99 ===
+Learning Rate = 0.00025600000000000004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.037       |0.821       |0.216       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.852       |0.682       |0.170       
+
+
+=== EPOCH 98/99 ===
+Learning Rate = 0.00025600000000000004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.032       |0.815       |0.217       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.809       |0.645       |0.164       
+
+
+Saving model with new best validation loss: 0.809
+
+=== EPOCH 99/99 ===
+Learning Rate = 0.00025600000000000004
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+1.051       |0.830       |0.221       
+
+
+TRAIN losses
+Total Loss  |Smoke Loss  |Fire Loss   
+------------ ------------ ------------
+0.827       |0.660       |0.166       
+
+Saving last model
+
+***Script finished: 04:01:24
+
+Time elapsed: 7:02:12.863838
+DFire Removed wrong images: 0
